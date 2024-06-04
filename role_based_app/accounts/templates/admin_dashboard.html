@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background: #f5f6fa;
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .dashboard-container {
+            background: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 2rem;
+            max-width: 600px;
+            width: 100%;
+            text-align: center;
+        }
+        .dashboard-container h2 {
+            color: #333;
+            font-weight: 500;
+            margin-bottom: 1.5rem;
+        }
+        .dashboard-container ul {
+            list-style: none;
+            padding: 0;
+        }
+        .dashboard-container ul li {
+            background: #f1f3f7;
+            margin-bottom: 1rem;
+            padding: 1rem;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+        }
+        .dashboard-container ul li:hover {
+            background: #e9ebf2;
+        }
+        .dashboard-container ul li span {
+            font-weight: 500;
+            color: #6e8efb;
+        }
+    </style>
+</head>
+<body>
+    <div class="dashboard-container">
+        <h2>Admin Dashboard</h2>
+        <ul>
+            {% for user in users %}
+                <li><span>{{ user.id }}</span> - {{ user.username }}-- {{user.role}}</li>
+            {% endfor %}
+        </ul>
+        <p>Don't have an account? <a href='{% url "user_logout" %}'>logout</a></p>
+    </div>
+</body>
+</html>
